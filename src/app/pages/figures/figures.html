@@ -1,0 +1,13 @@
+<h2>All Figures</h2>
+
+<div *ngIf="figures.length === 0">
+  No figures found.
+</div>
+
+<div *ngFor="let fig of figures">
+  <h3>{{ fig.name }}</h3>
+  <p>Series: {{ fig.series }}</p>
+  <p>Price: ₹{{ fig.price }}</p>
+  <img [src]="fig.imageUrl" width="150" />
+  <hr />
+</div>
