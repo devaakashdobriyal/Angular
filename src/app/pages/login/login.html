@@ -1,21 +1,74 @@
-<p>login works!</p>
-<div class="login-container">
-    <h2>LOGIN</h2>
+<div class="main-container">
 
-    <form (ngSubmit)="login()">
-        <div class="form-group">
-            <label>EMAIL</label>
-            <input type="email" [(ngModel)]="email" name="email" required placeholder="Enter your email"/>
-        </div>
-        <div class="form-group">
-            <label>PASSWORD</label>
-            <input type="password" [(ngModel)]="password" name="password" required placeholder="Enter your password"/>
-        </div>
-        
+  <div class="glass-wrapper">
+
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+      <h4 class="subtitle">Level Up Your Collection</h4>
+<h1 class="title">Enter the Arena</h1>
+      <div class="anime-container">
+        <img
+          [src]="images[currentIndex]"
+          class="anime-image"
+          alt="anime"
+        />
+      </div>
+     <p class="description">Track, manage and showcase your premium anime figures like a true collector.</p>
+    </div>
+
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+      <h2>Login</h2>
+      <form (ngSubmit)="login()">
+        <div class="input-group">
+          <label>Email</label>
+            <input
+              type="email"
+              [(ngModel)]="email"
+              name="email"
+              #emailRef="ngModel"
+              required
+              email
+            />
+            <small class="error"
+              *ngIf="emailRef.invalid && emailRef.touched">
+              Please enter a valid email address
+            </small>
+          </div>
+
+        <div class="input-group">
+  <label>Password</label>
+
+  <div class="password-wrapper">
+    <input
+      [type]="showPassword ? 'text' : 'password'"
+      [(ngModel)]="password"
+      name="password"
+      #passwordRef="ngModel"
+      required
+      minlength="6"
+    />
+
+    <span
+      class="eye-icon"
+      (click)="togglePassword()">
+      {{ showPassword ? '🙈' : '👁' }}
+    </span>
+  </div>
+
+  <small class="error"
+    *ngIf="passwordRef.invalid && passwordRef.touched">
+    Password must be at least 6 characters
+  </small>
+</div>
         <button type="submit">Login</button>
-            
-        
 
-    </form>
+
+      </form>
+
+    </div>
+
+  </div>
 
 </div>
